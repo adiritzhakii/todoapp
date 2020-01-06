@@ -3,7 +3,7 @@ node {
    stage('step a') {
      checkout scm
      sh "git rev-parse --short HEAD > .git/commit-id"                        
-     commit_id = readFile('.git/commit-id').trim()
+     commit_id = adir
    }
    stage('test') {
      nodejs(nodeJSInstallationName: 'nodejs') {
@@ -15,7 +15,7 @@ node {
    }
    stage('docker build/push') {
      docker.withRegistry('https://index.docker.io/v1/', 'frenzy669') {
-       def app = docker.build("frenzy669/docker-nodejs-demo:assaf-${commit_id}", 'basics').push()
+       def app = docker.build("frenzy669/docker-nodejs-demo:assaf-${commit_id}").push()
      }
    }
    stage('docker run') {
