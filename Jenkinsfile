@@ -8,8 +8,8 @@ node {
    stage('test') {
      nodejs(nodeJSInstallationName: 'nodejs') {
       sh label: '', script: '''
-      npm --prefix=basics install --only=dev
-      npm --prefix=basics test 
+      npm install --only=dev
+      npm test 
       '''
      }
    }
