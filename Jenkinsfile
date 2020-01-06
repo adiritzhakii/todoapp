@@ -3,7 +3,7 @@ node {
    stage('step a') {
      checkout scm
      sh "git rev-parse --short HEAD > .git/commit-id"                        
-     commit_id = adir
+     commit_id = "adir"
    }
    stage('test') {
      nodejs(nodeJSInstallationName: 'nodejs') {
